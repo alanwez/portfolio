@@ -1,0 +1,114 @@
+/* Marquee Container */
+.marquee-wrapper {
+    margin: 2rem 0;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.marquee-wrapper.reverse .marquee {
+    animation-direction: reverse;
+}
+
+.marquee {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    user-select: none;
+    gap: 2rem;
+}
+
+.marquee__group {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2rem;
+    min-width: 100%;
+    animation: scroll-x 30s linear infinite;
+}
+
+.marquee--reverse .marquee__group {
+    animation: scroll-x-reverse 30s linear infinite;
+}
+
+.marquee--slow .marquee__group {
+    animation-duration: 45s;
+}
+
+.marquee--hover-pause:hover .marquee__group {
+    animation-play-state: paused;
+}
+
+/* Client Logo Card */
+.client-logo-card {
+    flex: 0 0 auto;
+    width: 180px;
+    padding: 1rem;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+}
+
+.client-logo-card:hover {
+    transform: translateY(-5px);
+}
+
+.client-logo-card img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.client-logo-card:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+/* Animations */
+@keyframes scroll-x {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes scroll-x-reverse {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .client-logo-card {
+        width: 140px;
+        padding: 0.75rem;
+    }
+    
+    .marquee__group {
+        gap: 1rem;
+    }
+    
+    .clients-header h2 {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .client-logo-card {
+        width: 120px;
+        padding: 0.5rem;
+    }
+    
+    .marquee__group {
+        gap: 0.75rem;
+    }
+}
